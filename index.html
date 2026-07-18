@@ -2,56 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Личный Терапевт — Международное Демо</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #F4F6F4; color: #1A1A1A; font-size: 18px; line-height: 1.5; padding-bottom: 90px; }
-        
-        /* Шапка приложения */
-        .header { background-color: #2E7D32; color: white; padding: 15px 20px; text-align: center; font-shadow: 0 2px 4px rgba(0,0,0,0.1); position: relative; }
-        .header-title { font-size: 22px; font-weight: bold; }
-        
-        /* Переключатель языков и валют */
-        .selectors { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
-        select { padding: 6px 12px; font-size: 14px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; background: white; color: #2E7D32; }
-
-        /* Контейнер экранов */
-        .screen { padding: 20px; display: none; max-width: 500px; margin: 0 auto; }
-        .screen.active { display: block; }
-
-        /* Карточки */
-        .card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #E0E0E0; }
-        .card-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; color: #2E7D32; }
-
-        /* Кнопки */
-        .btn { display: block; width: 100%; background-color: #2E7D32; color: white; border: none; border-radius: 12px; padding: 18px; font-size: 18px; font-weight: bold; cursor: pointer; text-align: center; text-decoration: none; margin-top: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .btn:active { background-color: #1B5E20; }
-        .btn-outline { background-color: transparent; color: #2E7D32; border: 3px solid #2E7D32; box-shadow: none; }
-        .btn-orange { background-color: #EF6C00; }
-        .btn-orange:active { background-color: #E65100; }
-
-        /* Чат-интерфейс */
-        .chat-container { min-height: 250px; background: #E8F5E9; border-radius: 12px; padding: 15px; margin-bottom: 20px; border: 1px dashed #2E7D32; max-height: 350px; overflow-y: auto; }
-        .msg { margin-bottom: 15px; padding: 12px; border-radius: 12px; font-size: 18px; max-width: 85%; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .msg.bot { background: white; color: #1A1A1A; border-left: 5px solid #2E7D32; margin-right: auto; }
-        .msg.user { background: #DCF8C6; color: #1A1A1A; border-right: 5px solid #2E7D32; margin-left: auto; }
-        
-        .mic-btn-container { text-align: center; margin-top: 10px; }
-        .mic-btn { width: 85px; height: 85px; background-color: #D32F2F; color: white; border: none; border-radius: 50%; font-size: 32px; cursor: pointer; box-shadow: 0 6px 12px rgba(0,0,0,0.2); transition: transform 0.1s; }
-        .mic-btn:active { transform: scale(0.95); }
-
-        /* Кошелек */
-        .balance-num { font-size: 42px; font-weight: bold; color: #2E7D32; text-align: center; margin: 10px 0; }
-        .stat-line { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #EEEEEE; font-size: 18px; }
-        .stat-val { font-weight: bold; color: #2E7D32; }
-
-        /* Нижнее меню навигации */
-        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 75px; display: flex; box-shadow: 0 -4px 10px rgba(0,0,0,0.08); border-top: 1px solid #E0E0E0; z-index: 1000; }
-        .nav-item { flex: 1; text-align: center; background: none; border: none; font-size: 18px; font-weight: bold; color: #757575; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        .nav-item.active { color: #2E7D32; background-color: #E8F5E9; }
-        .nav-icon { font-size: 24px; margin-bottom: 2px; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Мой Личный Терапевт — Демо</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -75,13 +28,11 @@
         <div class="chat-container" id="chat-box">
             <div class="msg bot" id="txt-welcome-msg">👵 Здравствуйте! Я ваш личный медицинский помощник. Нажмите большую красную кнопку внизу и продиктуйте ваш вопрос голосом.</div>
         </div>
-        
         <div class="mic-btn-container">
             <button class="mic-btn" onclick="simulateVoiceInput()">🎤</button>
             <div style="margin-top: 10px; font-weight: bold; color: #555;" id="txt-mic-sub">Нажмите и говорите</div>
         </div>
-
-        <div class="card" style="margin-top: 25px;">
+        <div class="card">
             <div class="card-title" id="txt-ocr-title">📷 Понять анализы или рецепт</div>
             <p style="font-size: 16px; color: #666; margin-bottom: 10px;" id="txt-ocr-desc">Сфотографируйте бумажный бланк из поликлиники, и я переведу его на простой язык.</p>
             <button class="btn btn-outline" id="txt-ocr-btn" onclick="simulateOCR()">Сфотографировать бланк</button>
@@ -95,22 +46,18 @@
             <div class="balance-num"><span id="balance-val">0</span> <span class="curr-sign">₽</span></div>
             <p style="font-size: 14px; color: #555; text-align: center;" id="txt-bal-desc">1 балл = 1 единица валюты. Эти баллы не видны социальным службам и защищают ваши субсидии от пересчета!</p>
         </div>
-
-        <!-- СИМУЛЯТОР MLM -->
         <div class="card" style="background: #FFF3E0; border: 1px solid #FFB74D;">
             <div class="card-title" style="color: #E65100;" id="txt-sim-title">🎁 Симулятор сарафанного радио:</div>
             <p style="font-size: 16px; margin-bottom: 12px;" id="txt-sim-desc">Нажимайте кнопки, чтобы проверить, как растет сеть и увеличивается ваш доход:</p>
             <button class="btn btn-orange" id="txt-sim-b1" onclick="addNetworkUser(1)">+1 подруга купила подписку (Линия 1)</button>
             <button class="btn btn-orange" id="txt-sim-b2" onclick="addNetworkUser(2)" style="background-color: #F57C00;">Подруга пригласила знакомую (Линия 2)</button>
         </div>
-
         <div class="card">
             <div class="card-title" id="txt-stat-title">📊 Ваша сеть и доходы</div>
             <div class="stat-line"><span id="txt-stat-l1">Приглашено вами (Линия 1):</span> <span class="stat-val" id="l1-count">0 чел.</span></div>
             <div class="stat-line"><span id="txt-stat-l2">Приглашено ими (Линия 2):</span> <span class="stat-val" id="l2-count">0 чел.</span></div>
             <div class="stat-line" style="border-bottom: none;"><span id="txt-stat-inc">Ваш пассивный доход в месяц:</span> <span class="stat-val" id="income-val">0 <span class="curr-sign">₽</span>/мес</span></div>
         </div>
-
         <button class="btn" id="txt-btn-share" onclick="shareWhatsApp()">📢 Поделиться с подругой в WhatsApp</button>
         <button class="btn btn-outline" id="txt-btn-spend" onclick="spendPoints()">🛒 Оплатить ЖКХ / Телефон баллами</button>
     </div>
@@ -127,62 +74,6 @@
         </button>
     </div>
 
-    <script>
-        // Переводы текстов
-        const translations = {
-            ru: {
-                appTitle: "Ассистент Здоровья", walletTitle: "Мой Кошелек",
-                welcome: "👵 Здравствуйте! Я ваш личный медицинский помощник. Нажмите большую красную кнопку внизу и продиктуйте ваш вопрос голосом.",
-                micSub: "Нажмите и говорите", ocrTitle: "📷 Понять анализы или рецепт",
-                ocrDesc: "Сфотографируйте бумажный бланк из поликлиники, и я переведу его на простой язык.",
-                ocrBtn: "Сфотографировать бланк", balTitle: "Ваш баланс безопасных баллов:",
-                balDesc: "1 балл = 1 единица валюты. Эти баллы не видны социальным службам и защищают ваши субсидии от пересчета!",
-                simTitle: "🎁 Симулятор сарафанного радио:",
-                simDesc: "Нажимайте кнопки, чтобы проверить, как растет сеть и увеличивается ваш доход:",
-                simB1: "+1 подруга купила подписку (Линия 1)", simB2: "Подруга пригласила знакомую (Линия 2)",
-                statTitle: "📊 Ваша сеть и доходы", statL1: "Приглашено вами (Линия 1):",
-                statL2: "Приглашено ими (Линия 2):", statInc: "Ваш пассивный доход в месяц:",
-                btnShare: "📢 Поделиться с подругой в WhatsApp", btnSpend: "🛒 Оплатить ЖКХ / Телефон баллами",
-                navP1: "Помощник", navP2: "Кошелек",
-                userQ: "🎤 <i>Вы говорите:</i> «У меня покалывает в колене после дачи, что делать?»",
-                botA: "🤖 <b>Ответ ассистента:</b> Покалывание может быть вызвано нагрузкой. Присядьте, отдохните и приложите прохладный компресс. Если боль усилится, обратитесь к врачу.",
-              chatBox.innerHTML += <div class="msg bot">${t.ocrBot}</div>;
-chatBox.scrollTop = chatBox.scrollHeight;
-}, 1200);
-}
-function addNetworkUser(level) {
-if(level === 1) {
-l1Users++;
-balance += mlmRates.level1;
-monthlyIncome += mlmRates.level1;
-document.getElementById('l1-count').innerText = l1Users + ' чел.';
-} else if(level === 2) {
-l2Users++;
-balance += mlmRates.level2;
-monthlyIncome += mlmRates.level2;
-document.getElementById('l2-count').innerText = l2Users + ' чел.';
-}
-document.getElementById('balance-val').innerText = balance;
-document.getElementById('income-val').innerText = monthlyIncome + ' ' + currencySign;
-}
-function shareWhatsApp() {
-const t = translations[currentLang];
-const text = encodeURIComponent(t.shareText);
-window.open(https://whatsapp.com{text}, '_blank');
-}
-function spendPoints() {
-const t = translations[currentLang];
-const minPoints = currentCurrency === 'RUB' ? 500 : 2500;
-if(balance < minPoints) {
-alert(t.alertNoPoints);
-} else {
-balance -= minPoints;
-document.getElementById('balance-val').innerText = balance;
-const msg = currentCurrency === 'RUB' ? t.alertSuccessRu : t.alertSuccessAm;
-alert(msg);
-}
-}
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
