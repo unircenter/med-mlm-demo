@@ -45,7 +45,7 @@ const translations = {
         btnShare: "📢 Կիսվել ընկերուհու հետ WhatsApp-ով", navP1: "Օգնական", navP2: "Քսակ", navP3: "Ծախսել",
         rewAvail: "Հասանելի է գնումների համար:", rewTitle: "Որտե՞ղ ծախսել միավորները առանց հարկերի:",
         rewDesc: "Ընտրեք ծառայությունը: Գումարը կփոխանցվի հավելվածից, իսկ ձեր պետական նպաստները կմնան լիակատար պաշտպանության տակ:",
-        rewPhone: "Լիցքավորել հեռախոսահամարը", rewShop: "Սննդի սերտիֆիկատ (Ереван Сити / Մագնիտ)", rewPharma: "Դեղորայքի պատվեր դեղատնից",
+        rewPhone: "Լիցքավորել հեռախոսահամարը", rewShop: "Սննդի սերտիֆիկատ (Երևան Սիթի / Մագնիտ)", rewPharma: "Դեղորայքի պատվեր դեղատնից",
         userQ: "🎤 <i>Դուք ասում եք:</i> «Ծնկներս ցավում են քայլելիս, ի՞նչ անել»:",
         botA: "🤖 <b>Օգնականի պատասխանը:</b> Ծնկների ցավը կարող է լինել ծանրաբեռնվածությունից: Նստեք, հանգստացեք: Եթե ցավը չանցնի, դիմեք ձեր տեղամասային բժշկին:",
         ocrUser: "📷 <i>Անալիզի լուսանկարը բեռնված է...</i>",
@@ -85,7 +85,7 @@ function switchScreen(screenName) {
         document.getElementById('screen-wallet').style.display = 'block';
         document.getElementById('nav-wallet').classList.add('active');
         document.getElementById('header-title').innerText = t.walletTitle;
-    } else {
+    } else if(screenName === 'rewards') {
         document.getElementById('screen-rewards').style.display = 'block';
         document.getElementById('nav-rewards').classList.add('active');
         document.getElementById('header-title').innerText = t.rewardsTitle;
