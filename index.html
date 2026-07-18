@@ -61,7 +61,7 @@
         <button class="btn" id="txt-btn-share" onclick="shareWhatsApp()">📢 Поделиться с подругой в WhatsApp</button>
     </div>
 
-    <!-- ЭКРАН 3: ТРАТА БАЛЛОВ (НОВЫЙ!) -->
+    <!-- ЭКРАН 3: ТРАТА БАЛЛОВ -->
     <div id="screen-rewards" class="screen">
         <div class="card" style="background: #E8F5E9; border: 1px solid #2E7D32; padding: 15px; text-align: center;">
             <span id="txt-rew-avail" style="font-weight: bold;">Доступно для покупок:</span>
@@ -70,9 +70,8 @@
 
         <div class="card">
             <div class="card-title" id="txt-rew-title">Куда потратить баллы без налогов?</div>
-            <p style="font-size: 15px; color: #666; margin-bottom: 15px;" id="txt-rew-desc">Выберите услугу. Сумма спишется с баланса приложения, а субсидии останутся под защитой.</p>
+            <p style="font-size: 15px; color: #666; margin-bottom: 15px;" id="txt-rew-desc">Выберите услугу. Сумма спишется с баланса приложения, а ваши льготы и государственные субсидии останутся под полной защитой.</p>
             
-            <!-- Награда 1: Телефон -->
             <div class="reward-item" onclick="redeemReward('phone')">
                 <div class="reward-icon">📱</div>
                 <div class="reward-info">
@@ -81,7 +80,6 @@
                 </div>
             </div>
 
-            <!-- Награда 2: Продукты -->
             <div class="reward-item" onclick="redeemReward('shop')">
                 <div class="reward-icon">🛒</div>
                 <div class="reward-info">
@@ -90,7 +88,6 @@
                 </div>
             </div>
 
-            <!-- Награда 3: Аптека -->
             <div class="reward-item" onclick="redeemReward('pharma')">
                 <div class="reward-icon">💊</div>
                 <div class="reward-info">
@@ -101,7 +98,7 @@
         </div>
     </div>
 
-    <!-- МЕНЮ НАВИГАЦИИ (ОБНОВЛЕННОЕ — 3 КНОПКИ) -->
+    <!-- МЕНЮ НАВИГАЦИИ -->
     <div class="nav-bar">
         <button class="nav-item active" id="nav-assistant" onclick="switchScreen('assistant')">
             <span class="nav-icon">❤️</span>
