@@ -59,10 +59,49 @@
             <div class="stat-line" style="border-bottom: none;"><span id="txt-stat-inc">Ваш пассивный доход в месяц:</span> <span class="stat-val" id="income-val">0 <span class="curr-sign">₽</span>/мес</span></div>
         </div>
         <button class="btn" id="txt-btn-share" onclick="shareWhatsApp()">📢 Поделиться с подругой в WhatsApp</button>
-        <button class="btn btn-outline" id="txt-btn-spend" onclick="spendPoints()">🛒 Оплатить ЖКХ / Телефон баллами</button>
     </div>
 
-    <!-- МЕНЮ НАВИГАЦИИ -->
+    <!-- ЭКРАН 3: ТРАТА БАЛЛОВ (НОВЫЙ!) -->
+    <div id="screen-rewards" class="screen">
+        <div class="card" style="background: #E8F5E9; border: 1px solid #2E7D32; padding: 15px; text-align: center;">
+            <span id="txt-rew-avail" style="font-weight: bold;">Доступно для покупок:</span>
+            <span style="font-size: 24px; font-weight: bold; color: #2E7D32; margin-left: 5px;"><span id="balance-val-rewards">0</span> <span class="curr-sign">₽</span></span>
+        </div>
+
+        <div class="card">
+            <div class="card-title" id="txt-rew-title">Куда потратить баллы без налогов?</div>
+            <p style="font-size: 15px; color: #666; margin-bottom: 15px;" id="txt-rew-desc">Выберите услугу. Сумма спишется с баланса приложения, а субсидии останутся под защитой.</p>
+            
+            <!-- Награда 1: Телефон -->
+            <div class="reward-item" onclick="redeemReward('phone')">
+                <div class="reward-icon">📱</div>
+                <div class="reward-info">
+                    <div class="reward-name" id="txt-rew-p-name">Пополнить мобильную связь</div>
+                    <div class="reward-cost"><span class="cost-val-phone">500</span> <span class="curr-sign">₽</span></div>
+                </div>
+            </div>
+
+            <!-- Награда 2: Продукты -->
+            <div class="reward-item" onclick="redeemReward('shop')">
+                <div class="reward-icon">🛒</div>
+                <div class="reward-info">
+                    <div class="reward-name" id="txt-rew-s-name">Сертификат в продуктовый магазин</div>
+                    <div class="reward-cost"><span class="cost-val-shop">1000</span> <span class="curr-sign">₽</span></div>
+                </div>
+            </div>
+
+            <!-- Награда 3: Аптека -->
+            <div class="reward-item" onclick="redeemReward('pharma')">
+                <div class="reward-icon">💊</div>
+                <div class="reward-info">
+                    <div class="reward-name" id="txt-rew-m-name">Заказ лекарств в аптеке</div>
+                    <div class="reward-cost"><span class="cost-val-pharma">1500</span> <span class="curr-sign">₽</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕНЮ НАВИГАЦИИ (ОБНОВЛЕННОЕ — 3 КНОПКИ) -->
     <div class="nav-bar">
         <button class="nav-item active" id="nav-assistant" onclick="switchScreen('assistant')">
             <span class="nav-icon">❤️</span>
@@ -71,6 +110,10 @@
         <button class="nav-item" id="nav-wallet" onclick="switchScreen('wallet')">
             <span class="nav-icon">👛</span>
             <span id="txt-nav-p2">Кошелек</span>
+        </button>
+        <button class="nav-item" id="nav-rewards" onclick="switchScreen('rewards')">
+            <span class="nav-icon">🎁</span>
+            <span id="txt-nav-p3">Трата баллов</span>
         </button>
     </div>
 
