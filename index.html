@@ -80,11 +80,19 @@
                 </div>
             </div>
 
+            <div class="reward-item" onclick="redeemReward('jkh')">
+                <div class="reward-icon">🏢</div>
+                <div class="reward-info">
+                    <div class="reward-name" id="txt-rew-j-name">Оплата услуг ЖКХ (Квартплата)</div>
+                    <div class="reward-cost"><span class="cost-val-jkh">1000</span> <span class="curr-sign">₽</span></div>
+                </div>
+            </div>
+
             <div class="reward-item" onclick="redeemReward('shop')">
                 <div class="reward-icon">🛒</div>
                 <div class="reward-info">
                     <div class="reward-name" id="txt-rew-s-name">Сертификат в продуктовый магазин</div>
-                    <div class="reward-cost"><span class="cost-val-shop">1000</span> <span class="curr-sign">₽</span></div>
+                    <div class="reward-cost"><span class="cost-val-shop">1500</span> <span class="curr-sign">₽</span></div>
                 </div>
             </div>
 
@@ -92,7 +100,15 @@
                 <div class="reward-icon">💊</div>
                 <div class="reward-info">
                     <div class="reward-name" id="txt-rew-m-name">Заказ лекарств в аптеке</div>
-                    <div class="reward-cost"><span class="cost-val-pharma">1500</span> <span class="curr-sign">₽</span></div>
+                    <div class="reward-cost"><span class="cost-val-pharma">2000</span> <span class="curr-sign">₽</span></div>
+                </div>
+            </div>
+
+            <div class="reward-item" onclick="openSbpModal()" style="border: 2px dashed #EF6C00; background: #FFF3E0;">
+                <div class="reward-icon">💳</div>
+                <div class="reward-info">
+                    <div class="reward-name" id="txt-rew-sbp-name" style="color: #E65100;">Вывести на карту Мир (СБП)</div>
+                    <div class="reward-cost" style="color: #E65100;"><span id="txt-rew-sbp-min">от 500</span> <span class="curr-sign">₽</span></div>
                 </div>
             </div>
         </div>
