@@ -39,133 +39,133 @@ const translations = {
         botA: "🤖 <b>Օգնականի պատասխանը:</b> Ծնկների ցավը կարող է լինել ծանրաբեռնվածությունից: Նստեք, հանգստացեք: Եթե ցավը չանցնի, դիմեք ձեր տեղամասային բժշկին:",
         ocrUser: "📷 <i>Անալիզի լուսանկարը բեռնված է...</i>",
         ocrBot: "🔬 <b>Արյան անալիզի պարզաբանում:</b><br>• Հեմոգլոբին: 135 (Նորմա):<br>• Խոլեստերին: 6.2 (Բարձր է): Սահմանափակեք յուղոտ սնունդը:",
-                shareText: "Բարև! Հրաշալի հավելված եմ գտել: Ձայնով հարցեր ես տալիս, անալիզներն էլ պարզ բացատրում է: Ներբեռնիր և մուտքագրիր իմ հեռախոսահամարը:",
-                alertNoPoints: "Բավարար միավորներ չկան: Հրավիրեք ընկերուհիներին:",
-                alertSuccessRu: "Успешно! Баллы списаны на оплату услуг. Налоговая и субсидии в безопасности!"
-            }
-        };
+        shareText: "Բարև! Հրաշալի հավելված եմ գտել: Ձայնով հարցեր ես տալիս, անալիզներն էլ պարզ բացատրում է: Ներբեռնիր և մուտքագրիր իմ հեռախոսահամարը:",
+        alertNoPoints: "Բավարար միավորներ չկան: Հրավիրեք ընկերուհիներին:",
+        alertSuccessRu: "Успешно! Баллы списаны на оплату услуг. Налоговая и субсидии в безопасности!"
+    }
+};
 
-        let currentLang = 'ru';
-        let currentCurrency = 'RUB';
-        let currencySign = '₽';
-        let mlmRates = { level1: 175, level2: 50 };
-        let balance = 0; let l1Users = 0; let l2Users = 0; let monthlyIncome = 0;
+let currentLang = 'ru';
+let currentCurrency = 'RUB';
+let currencySign = '₽';
+let mlmRates = { level1: 175, level2: 50 };
+let balance = 0; let l1Users = 0; let l2Users = 0; let monthlyIncome = 0;
 
-        function switchScreen(screenName) {
-            document.getElementById('screen-assistant').style.display = 'none';
-            document.getElementById('screen-wallet').style.display = 'none';
-            document.getElementById('nav-assistant').classList.remove('active');
-            document.getElementById('nav-wallet').classList.remove('active');
-            const t = translations[currentLang];
-            if(screenName === 'assistant') {
-                document.getElementById('screen-assistant').style.display = 'block';
-                document.getElementById('nav-assistant').classList.add('active');
-                document.getElementById('header-title').innerText = t.appTitle;
-            } else {
-                document.getElementById('screen-wallet').style.display = 'block';
-                document.getElementById('nav-wallet').classList.add('active');
-                document.getElementById('header-title').innerText = t.walletTitle;
-            }
-        }
-
-        function changeLanguage() {
-            currentLang = document.getElementById('lang-select').value;
-            updateLocalization();
-            switchScreen('assistant');
-        }
-
-        function changeCurrency() {
-            currentCurrency = document.getElementById('currency-select').value;
-            if(currentCurrency === 'RUB') {
-                currencySign = '₽';
-                mlmRates = { level1: 175, level2: 50 };
-            } else {
-                currencySign = '֏';
-                mlmRates = { level1: 875, level2: 250 };
-            }
-            balance = 0; l1Users = 0; l2Users = 0; monthlyIncome = 0;
-            document.getElementById('balance-val').innerText = balance;
-            document.getElementById('income-val').innerText = monthlyIncome + ' ' + currencySign;
-            document.getElementById('l1-count').innerText = '0 чел.';
-            document.getElementById('l2-count').innerText = '0 чел.';
-            document.querySelectorAll('.curr-sign').forEach(el => el.innerText = currencySign);
-            updateLocalization();
-        }
-
-        function updateLocalization() {
-            const t = translations[currentLang];
-            document.getElementById('txt-welcome-msg').innerHTML = t.welcome;
-            document.getElementById('txt-mic-sub').innerText = t.micSub;
-            document.getElementById('txt-ocr-title').innerText = t.ocrTitle;
-            document.getElementById('txt-ocr-desc').innerText = t.ocrDesc;
-            document.getElementById('txt-ocr-btn').innerText = t.ocrBtn;
-            document.getElementById('txt-bal-title').innerText = t.balTitle;
-            document.getElementById('txt-bal-desc').innerText = t.balDesc;
-            document.getElementById('txt-sim-title').innerText = t.simTitle;
-            document.getElementById('txt-sim-desc').innerText = t.simDesc;
-            document.getElementById('txt-sim-b1').innerText = t.simB1;
-            document.getElementById('txt-sim-b2').innerText = t.simB2;
-            document.getElementById('txt-stat-title').innerText = t.statTitle;
-            document.getElementById('txt-stat-l1').innerText = t.statL1;
-            document.getElementById('txt-stat-l2').innerText = t.statL2;
-            document.getElementById('txt-stat-inc').innerText = t.statInc;
-            document.getElementById('txt-btn-share').innerText = t.btnShare;
-            document.getElementById('txt-btn-spend').innerText = t.btnSpend;
-            document.getElementById('txt-nav-p1').innerText = t.navP1;
-            document.getElementById('txt-nav-p2').innerText = t.navP2;
-        }
-
-        function simulateVoiceInput() {
-            const chatBox = document.getElementById('chat-box');
-            const t = translations[currentLang];
-            chatBox.innerHTML += `<div class="msg user">${t.userQ}</div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
-            setTimeout(() => {
-                chatBox.innerHTML += `<div class="msg bot">${t.botA}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 800);
-        }
-
-        function simulateOCR() {
-            const chatBox = document.getElementById('chat-box');
-            const t = translations[currentLang];
-            chatBox.innerHTML += `<div class="msg user">${t.ocrUser}</div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
-            setTimeout(() => {
-                chatBox.innerHTML += `<div class="msg bot">${t.ocrBot}</div>`;
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 800);
-        }
-
-        function addNetworkUser(level) {
-            if(level === 1) {
-                l1Users++;
-                balance += mlmRates.level1;
-                monthlyIncome += mlmRates.level1;
-                document.getElementById('l1-count').innerText = l1Users + ' чел.';
-            } else if(level === 2) {
-                l2Users++;
-                balance += mlmRates.level2;
-                monthlyIncome += mlmRates.level2;
-                document.getElementById('l2-count').innerText = l2Users + ' чел.';
-            }
-            document.getElementById('balance-val').innerText = balance;
-            document.getElementById('income-val').innerText = monthlyIncome + ' ' + currencySign;
-        }
-
-        function shareWhatsApp() {
-            const t = translations[currentLang];
-            window.open(`https://whatsapp.com{encodeURIComponent(t.shareText)}`, '_blank');
-        }
-
-        function spendPoints() {
-            const t = translations[currentLang];
-            const minPoints = currentCurrency === 'RUB' ? 500 : 2500;
-          if(balance < minPoints) {
-    alert(t.alertNoPoints);
-} else {
-    balance -= minPoints;
-    document.getElementById('balance-val').innerText = balance;
-    alert(currentCurrency === 'RUB' ? t.alertSuccessRu : "Հաջողությամբ! Կոմունալ վճարումները կատարված են Idram-ի միջոցով:");
+function switchScreen(screenName) {
+    document.getElementById('screen-assistant').style.display = 'none';
+    document.getElementById('screen-wallet').style.display = 'none';
+    document.getElementById('nav-assistant').classList.remove('active');
+    document.getElementById('nav-wallet').classList.remove('active');
+    const t = translations[currentLang];
+    if(screenName === 'assistant') {
+        document.getElementById('screen-assistant').style.display = 'block';
+        document.getElementById('nav-assistant').classList.add('active');
+        document.getElementById('header-title').innerText = t.appTitle;
+    } else {
+        document.getElementById('screen-wallet').style.display = 'block';
+        document.getElementById('nav-wallet').classList.add('active');
+        document.getElementById('header-title').innerText = t.walletTitle;
+    }
 }
 
+function changeLanguage() {
+    currentLang = document.getElementById('lang-select').value;
+    updateLocalization();
+    switchScreen('assistant');
+}
+
+function changeCurrency() {
+    currentCurrency = document.getElementById('currency-select').value;
+    if(currentCurrency === 'RUB') {
+        currencySign = '₽';
+        mlmRates = { level1: 175, level2: 50 };
+    } else {
+        currencySign = '֏';
+        mlmRates = { level1: 875, level2: 250 };
+    }
+    balance = 0; l1Users = 0; l2Users = 0; monthlyIncome = 0;
+    document.getElementById('balance-val').innerText = balance;
+    document.getElementById('income-val').innerText = monthlyIncome + ' ' + currencySign;
+    document.getElementById('l1-count').innerText = '0 чел.';
+    document.getElementById('l2-count').innerText = '0 чел.';
+    document.querySelectorAll('.curr-sign').forEach(el => el.innerText = currencySign);
+    updateLocalization();
+}
+
+function updateLocalization() {
+    const t = translations[currentLang];
+    document.getElementById('txt-welcome-msg').innerHTML = t.welcome;
+    document.getElementById('txt-mic-sub').innerText = t.micSub;
+    document.getElementById('txt-ocr-title').innerText = t.ocrTitle;
+    document.getElementById('txt-ocr-desc').innerText = t.ocrDesc;
+    document.getElementById('txt-ocr-btn').innerText = t.ocrBtn;
+    document.getElementById('txt-bal-title').innerText = t.balTitle;
+    document.getElementById('txt-bal-desc').innerText = t.balDesc;
+    document.getElementById('txt-sim-title').innerText = t.simTitle;
+    document.getElementById('txt-sim-desc').innerText = t.simDesc;
+    document.getElementById('txt-sim-b1').innerText = t.simB1;
+    document.getElementById('txt-sim-b2').innerText = t.simB2;
+    document.getElementById('txt-stat-title').innerText = t.statTitle;
+    document.getElementById('txt-stat-l1').innerText = t.statL1;
+    document.getElementById('txt-stat-l2').innerText = t.statL2;
+    document.getElementById('txt-stat-inc').innerText = t.statInc;
+    document.getElementById('txt-btn-share').innerText = t.btnShare;
+    document.getElementById('txt-btn-spend').innerText = t.btnSpend;
+    document.getElementById('txt-nav-p1').innerText = t.navP1;
+    document.getElementById('txt-nav-p2').innerText = t.navP2;
+}
+
+function simulateVoiceInput() {
+    const chatBox = document.getElementById('chat-box');
+    const t = translations[currentLang];
+    chatBox.innerHTML += `<div class="msg user">${t.userQ}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+    setTimeout(() => {
+        chatBox.innerHTML += `<div class="msg bot">${t.botA}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 800);
+}
+
+function simulateOCR() {
+    const chatBox = document.getElementById('chat-box');
+    const t = translations[currentLang];
+    chatBox.innerHTML += `<div class="msg user">${t.ocrUser}</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+    setTimeout(() => {
+        chatBox.innerHTML += `<div class="msg bot">${t.ocrBot}</div>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+            }, 800);
+}
+
+function addNetworkUser(level) {
+    if(level === 1) {
+        l1Users++;
+        balance += mlmRates.level1;
+        monthlyIncome += mlmRates.level1;
+        document.getElementById('l1-count').innerText = l1Users + ' чел.';
+    } else if(level === 2) {
+        l2Users++;
+        balance += mlmRates.level2;
+        monthlyIncome += mlmRates.level2;
+        document.getElementById('l2-count').innerText = l2Users + ' чел.';
+    }
+    document.getElementById('balance-val').innerText = balance;
+    document.getElementById('income-val').innerText = monthlyIncome + ' ' + currencySign;
+}
+
+function shareWhatsApp() {
+    const t = translations[currentLang];
+    window.open(`https://whatsapp.com{encodeURIComponent(t.shareText)}`, '_blank');
+}
+
+function spendPoints() {
+    const t = translations[currentLang];
+    const minPoints = currentCurrency === 'RUB' ? 500 : 2500;
+    if(balance < minPoints) {
+        alert(t.alertNoPoints);
+    } else {
+        balance -= minPoints;
+        document.getElementById('balance-val').innerText = balance;
+        alert(currentCurrency === 'RUB' ? t.alertSuccessRu : "Հաջողությամբ! Կոմունալ վճարումները կատարված են Idram-ի միջոցով:");
+    }
+}
