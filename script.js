@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
     updateLocalization();
     switchScreen('assistant');
+    
+    // Прямая привязка клика для вывода на карту, защищенная от сбоев
+    const sbpZone = document.getElementById('sbp-clickable-zone');
+    if(sbpZone) {
+        sbpZone.addEventListener('click', function(e) {
+            e.preventDefault();
+            openSbpModal();
+        });
+    }
 });
 
 const translations = {
@@ -22,7 +31,7 @@ const translations = {
         rewPhone: "Пополнить мобильную связь", rewJkh: "Оплата услуг ЖКХ (Квартплата)", rewShop: "Сертификат в продуктовый (Пятерочка/Магнит)", rewPharma: "Заказ лекарств в онлайн-аптеке",
         rewSbpName: "Вывести на карту Мир (СБП)", rewSbpMin: "от 500",
         userQ: "🎤 <i>Вы говорите:</i> «У меня покалывает в колене после ходьбы, что делать?»",
-        botA: "🤖 <b>Ответ ассистента:</b> Покалывание может быть вызвано нагрузкой на сустав. Присядьте, отдохните и приложите прохнадный компресс на 10 минут. Если боль усилится, обязательно обратитесь к врачу.",
+        botA: "🤖 <b>Ответ ассистента:</b> Покалывание может быть вызвано нагрузкой на сустав. Присядьте, отдохните и приложите прохладный компресс на 10 минут. Если боль усилится, обязательно обратитесь к врачу.",
         ocrUser: "📷 <i>Загружено фото бланка анализов...</i>",
         ocrBot: "🔬 <b>Разбор анализа крови:</b><br>• Гемоглобин: 135 (В норме).<br>• Холестерин: 6.2 (Повышен). Ограничьте жирные продукты и проконсультируйтесь с терапевтом.",
         shareText: "Привет! Нашла отличного голосового помощника по здоровью. Он мне перевел анализы и напоминает пить лекарства. Скачай и введи мой номер телефона при входе!",
@@ -137,13 +146,32 @@ function changeCurrency() {
     document.querySelector('.cost-val-jkh').innerText = rewardCosts.jkh;
     document.querySelector('.cost-val-shop').innerText = rewardCosts.shop;
     document.querySelector('.cost-val-pharma').innerText = rewardCosts.pharma;
-    
     document.querySelectorAll('.curr-sign').forEach(el => el.innerText = currencySign);
     updateLocalization();
 }
 
 function updateLocalization() {
     const t = translations[currentLang];
+    document.getElementById('txt-welcome-msg').innerHTML = t.welcome;
+    document.getElementById('txt-mic-sub').innerText = t.micSub;
+    document.getElementById('txt-ocr-title').innerText = t.ocrTitle;
+    document.getElementById('txt-ocr-desc').innerText = t.ocrDesc;
+    document.getElementById('txt-ocr-btn').innerText = t.ocrBtn;
+    document.getElementById('txt-bal-title').innerText = t.balTitle;
+    document.getElementById('txt-bal-desc').innerText = t.balDesc;
+    document.getElementById('txt-sim-title').innerText = t.simTitle;
+    document.getElementById('txt-sim-desc').innerText = t.simDesc;
+    document.getElementById('txt-sim-b1').innerText = t.simB1;
+    document.getElementById('txt-sim-b2').innerText = t.simB2;
+    document.getElementById('txt-stat-title').innerText = t.statTitle;
+    document.getElementById('txt-stat-l1').innerText = t.statL1;
+    document.getElementById('txt-stat-l2').innerText = t.statL2;
+    document.getElementById('txt-stat-inc').innerText = t.statInc;
+    document.getElementById('txt-btn-share').innerText = t.btnShare;
+    document.getElementById('txt-nav-p1').innerText = t.navP1;
+    document.getElementById('txt-nav-p2').innerText = t.navP2;
+    document.getElementById('txt-nav-p3').innerText = t.navP3;
+    document.getElementById('txt-rew-avail').innerText = t.rewAvail;
     document.getElementById('txt-rew-title').innerText = t.rewTitle;
     document.getElementById('txt-rew-desc').innerText = t.rewDesc;
     document.getElementById('txt-rew-p-name').innerText = t.rewPhone;
@@ -200,14 +228,12 @@ function shareWhatsApp() {
 function redeemReward(type) {
     const t = translations[currentLang];
     const cost = rewardCosts[type];
-    
     if (balance < cost) {
         alert(t.alertNoPoints);
     } else {
         balance -= cost;
         document.getElementById('balance-val').innerText = balance;
         document.getElementById('balance-val-rewards').innerText = balance;
-        
         if (type === 'phone') alert(t.sucPhone);
         else if (type === 'jkh') alert(t.sucJkh);
         else if (type === 'shop') alert(t.sucShop);
@@ -218,22 +244,18 @@ function redeemReward(type) {
 function openSbpModal() {
     const t = translations[currentLang];
     const minAmount = currentCurrency === 'RUB' ? 500 : 2500;
-    
     if (balance < minAmount) {
         alert(t.alertNoPoints);
         return;
     }
-    
     let sum = prompt(t.sbpPromptSum, minAmount);
     if (!sum || parseInt(sum) < minAmount) return;
     if (parseInt(sum) > balance) {
         alert(t.alertNoPoints);
         return;
     }
-    
     let inn = prompt(t.sbpPromptInn, "123456789012");
     if (!inn) return;
-    
     let card = prompt(t.sbpPromptCard, "+7 (999) 000-00-00, Т-Банк");
     if (!card) return;
     
