@@ -10,105 +10,95 @@
 
     <!-- ШАПКА -->
     <div class="header">
-        <div class="header-title" id="txt-app-title">Ассистент Здоровья</div>
-        <div class="selectors">
-            <select id="lang-select" onchange="changeLanguage()">
-                <option value="ru">Русский 🇷🇺</option>
-                <option value="am">Հայերեն 🇦🇲</option>
-            </select>
-            <select id="currency-select" onchange="changeCurrency()">
-                <option value="RUB">Рубли (₽)</option>
-                <option value="AMD">Драмы (֏)</option>
-            </select>
-        </div>
+        <div class="header-title">Ассистент Здоровья</div>
     </div>
 
     <!-- ЭКРАН 1: АССИСТЕНТ -->
     <div id="screen-assistant" class="screen active">
         <div class="chat-container" id="chat-box">
-            <div class="msg bot" id="txt-welcome-msg">👵 Здравствуйте! Я ваш личный медицинский помощник. Нажмите большую красную кнопку внизу и продиктуйте ваш вопрос голосом.</div>
+            <div class="msg bot">👵 Здравствуйте! Я ваш личный медицинский помощник. Нажмите большую красную кнопку внизу и продиктуйте ваш вопрос голосом.</div>
         </div>
         <div class="mic-btn-container">
             <button class="mic-btn" onclick="simulateVoiceInput()">🎤</button>
-            <div style="margin-top: 10px; font-weight: bold; color: #555;" id="txt-mic-sub">Нажмите и говорите</div>
+            <div style="margin-top: 10px; font-weight: bold; color: #555;">Нажмите и говорите</div>
         </div>
         <div class="card">
-            <div class="card-title" id="txt-ocr-title">📷 Понять анализы или рецепт</div>
-            <p style="font-size: 16px; color: #666; margin-bottom: 10px;" id="txt-ocr-desc">Сфотографируйте бумажный бланк из поликлиники, и я переведу его на простой язык.</p>
-            <button class="btn btn-outline" id="txt-ocr-btn" onclick="simulateOCR()">Сфотографировать бланк</button>
+            <div class="card-title">📷 Понять анализы или рецепт</div>
+            <p style="font-size: 16px; color: #666; margin-bottom: 10px;">Сфотографируйте бумажный бланк из поликлиники, и я переведу его на простой язык.</p>
+            <button class="btn btn-outline" onclick="simulateOCR()">Сфотографировать бланк</button>
         </div>
     </div>
 
     <!-- ЭКРАН 2: КОШЕЛЕК -->
     <div id="screen-wallet" class="screen">
         <div class="card" style="background: #E8F5E9; border: 2px solid #2E7D32;">
-            <div class="card-title" style="text-align: center; margin-bottom: 0;" id="txt-bal-title">Ваш баланс безопасных баллов:</div>
-            <div class="balance-num"><span id="balance-val">0</span> <span class="curr-sign">₽</span></div>
-            <p style="font-size: 14px; color: #555; text-align: center;" id="txt-bal-desc">1 балл = 1 единица валюты. Эти баллы не видны социальным службам и защищают ваши субсидии от пересчета!</p>
+            <div class="card-title" style="text-align: center; margin-bottom: 0;">Ваш баланс безопасных баллов:</div>
+            <div class="balance-num"><span id="balance-val">0</span> ₽</div>
+            <p style="font-size: 14px; color: #555; text-align: center;">1 балл = 1 рубль. Эти баллы не видны социальным службам и защищают ваши субсидии от пересчета!</p>
         </div>
         <div class="card" style="background: #FFF3E0; border: 1px solid #FFB74D;">
-            <div class="card-title" style="color: #E65100;" id="txt-sim-title">🎁 Симулятор сарафанного радио:</div>
-            <p style="font-size: 16px; margin-bottom: 12px;" id="txt-sim-desc">Нажимайте кнопки, чтобы проверить, как растет сеть и увеличивается ваш доход:</p>
-            <button class="btn btn-orange" id="txt-sim-b1" onclick="addNetworkUser(1)">+1 подруга купила подписку (Линия 1)</button>
-            <button class="btn btn-orange" id="txt-sim-b2" onclick="addNetworkUser(2)" style="background-color: #F57C00;">Подруга пригласила знакомую (Линия 2)</button>
+            <div class="card-title" style="color: #E65100;">🎁 Симулятор сарафанного радио:</div>
+            <p style="font-size: 16px; margin-bottom: 12px;">Нажимайте кнопки, чтобы проверить, как растет сеть и увеличивается ваш доход:</p>
+            <button class="btn btn-orange" onclick="addNetworkUser(1)">+1 подруга купила подписку (Линия 1)</button>
+            <button class="btn btn-orange" onclick="addNetworkUser(2)" style="background-color: #F57C00;">Подруга пригласила знакомую (Линия 2)</button>
         </div>
         <div class="card">
-            <div class="card-title" id="txt-stat-title">📊 Ваша сеть и доходы</div>
-            <div class="stat-line"><span id="txt-stat-l1">Приглашено вами (Линия 1):</span> <span class="stat-val" id="l1-count">0 чел.</span></div>
-            <div class="stat-line"><span id="txt-stat-l2">Приглашено ими (Линия 2):</span> <span class="stat-val" id="l2-count">0 чел.</span></div>
-            <div class="stat-line" style="border-bottom: none;"><span id="txt-stat-inc">Ваш пассивный доход в месяц:</span> <span class="stat-val" id="income-val">0 <span class="curr-sign">₽</span>/мес</span></div>
+            <div class="card-title">📊 Ваша сеть и доходы</div>
+            <div class="stat-line"><span>Приглашено вами (Линия 1):</span> <span class="stat-val" id="l1-count">0 чел.</span></div>
+            <div class="stat-line"><span>Приглашено ими (Линия 2):</span> <span class="stat-val" id="l2-count">0 чел.</span></div>
+            <div class="stat-line" style="border-bottom: none;"><span>Ваш пассивный доход в месяц:</span> <span class="stat-val" id="income-val">0 ₽/мес</span></div>
         </div>
-        <button class="btn" id="txt-btn-share" onclick="shareWhatsApp()">📢 Поделиться с подругой в WhatsApp</button>
+        <button class="btn" onclick="shareWhatsApp()">📢 Поделиться с подругой в WhatsApp</button>
     </div>
 
     <!-- ЭКРАН 3: ТРАТА БАЛЛОВ -->
     <div id="screen-rewards" class="screen">
         <div class="card" style="background: #E8F5E9; border: 1px solid #2E7D32; padding: 15px; text-align: center;">
-            <span id="txt-rew-avail" style="font-weight: bold;">Доступно для покупок:</span>
-            <span style="font-size: 24px; font-weight: bold; color: #2E7D32; margin-left: 5px;"><span id="balance-val-rewards">0</span> <span class="curr-sign">₽</span></span>
+            <span>Доступно для покупок:</span>
+            <span style="font-size: 24px; font-weight: bold; color: #2E7D32; margin-left: 5px;"><span id="balance-val-rewards">0</span> ₽</span>
         </div>
 
         <div class="card">
-            <div class="card-title" id="txt-rew-title">Куда потратить баллы без налогов?</div>
-            <p style="font-size: 15px; color: #666; margin-bottom: 15px;" id="txt-rew-desc">Выберите услугу. Сумма спишется с баланса приложения, а ваши льготы и государственные субсидии останутся под полной защитой.</p>
+            <div class="card-title">Куда потратить баллы без налогов?</div>
+            <p style="font-size: 15px; color: #666; margin-bottom: 15px;">Выберите услугу. Сумма спишется с баланса приложения, а ваши льготы и государственные субсидии останутся под полной защитой.</p>
             
             <div class="reward-item" onclick="redeemReward('phone')">
                 <div class="reward-icon">📱</div>
                 <div class="reward-info">
-                    <div class="reward-name" id="txt-rew-p-name">Пополнить мобильную связь</div>
-                    <div class="reward-cost"><span class="cost-val-phone">500</span> <span class="curr-sign">₽</span></div>
+                    <div class="reward-name">Пополнить мобильную связь</div>
+                    <div class="reward-cost">500 ₽</div>
                 </div>
             </div>
 
             <div class="reward-item" onclick="redeemReward('jkh')">
                 <div class="reward-icon">🏢</div>
                 <div class="reward-info">
-                    <div class="reward-name" id="txt-rew-j-name">Оплата услуг ЖКХ (Квартплата)</div>
-                    <div class="reward-cost"><span class="cost-val-jkh">1000</span> <span class="curr-sign">₽</span></div>
+                    <div class="reward-name">Оплата услуг ЖКХ (Квартплата)</div>
+                    <div class="reward-cost">1000 ₽</div>
                 </div>
             </div>
 
             <div class="reward-item" onclick="redeemReward('shop')">
                 <div class="reward-icon">🛒</div>
                 <div class="reward-info">
-                    <div class="reward-name" id="txt-rew-s-name">Сертификат в продуктовый магазин</div>
-                    <div class="reward-cost"><span class="cost-val-shop">1500</span> <span class="curr-sign">₽</span></div>
+                    <div class="reward-name">Сертификат в продуктовый магазин</div>
+                    <div class="reward-cost">1500 ₽</div>
                 </div>
             </div>
 
             <div class="reward-item" onclick="redeemReward('pharma')">
                 <div class="reward-icon">💊</div>
                 <div class="reward-info">
-                    <div class="reward-name" id="txt-rew-m-name">Заказ лекарств в аптеке</div>
-                    <div class="reward-cost"><span class="cost-val-pharma">2000</span> <span class="curr-sign">₽</span></div>
+                    <div class="reward-name">Заказ лекарств в аптеке</div>
+                    <div class="reward-cost">2000 ₽</div>
                 </div>
             </div>
 
             <div class="reward-item" id="sbp-clickable-zone" style="border: 2px dashed #EF6C00; background: #FFF3E0; cursor: pointer;">
                 <div class="reward-icon">💳</div>
                 <div class="reward-info">
-                    <div class="reward-name" id="txt-rew-sbp-name" style="color: #E65100;">Вывести на карту Мир (СБП)</div>
-                    <div class="reward-cost" style="color: #E65100;"><span id="txt-rew-sbp-min">от 500</span> <span class="curr-sign">₽</span></div>
+                    <div class="reward-name" style="color: #E65100; font-weight: bold;">Вывести на карту Мир (СБП)</div>
+                    <div class="reward-cost" style="color: #E65100;">от 500 ₽</div>
                 </div>
             </div>
         </div>
@@ -118,15 +108,15 @@
     <div class="nav-bar">
         <button class="nav-item active" id="nav-assistant" onclick="switchScreen('assistant')">
             <span class="nav-icon">❤️</span>
-            <span id="txt-nav-p1">Помощник</span>
+            <span>Помощник</span>
         </button>
         <button class="nav-item" id="nav-wallet" onclick="switchScreen('wallet')">
             <span class="nav-icon">👛</span>
-            <span id="txt-nav-p2">Кошелек</span>
+            <span>Кошелек</span>
         </button>
         <button class="nav-item" id="nav-rewards" onclick="switchScreen('rewards')">
             <span class="nav-icon">🎁</span>
-            <span id="txt-nav-p3">Трата баллов</span>
+            <span>Трата баллов</span>
         </button>
     </div>
 
