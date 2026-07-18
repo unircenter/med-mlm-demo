@@ -19,16 +19,23 @@ const translations = {
         btnShare: "📢 Поделиться с подругой в WhatsApp", navP1: "Помощник", navP2: "Кошелек", navP3: "Трата баллов",
         rewAvail: "Доступно для покупок:", rewTitle: "Куда потратить баллы без налогов?",
         rewDesc: "Выберите услугу. Сумма спишется с баланса приложения, а ваши льготы и государственные субсидии останутся под полной защитой.",
-        rewPhone: "Пополнить мобильную связь", rewShop: "Сертификат в продуктовый (Пятерочка/Магнит)", rewPharma: "Заказ лекарств в онлайн-аптеке",
+        rewPhone: "Пополнить мобильную связь", rewJkh: "Оплата услуг ЖКХ (Квартплата)", rewShop: "Сертификат в продуктовый (Пятерочка/Магнит)", rewPharma: "Заказ лекарств в онлайн-аптеке",
+        rewSbpName: "Вывести на карту Мир (СБП)", rewSbpMin: "от 500",
         userQ: "🎤 <i>Вы говорите:</i> «У меня покалывает в колене после ходьбы, что делать?»",
-        botA: "🤖 <b>Ответ ассистента:</b> Покалывание может быть вызвано нагрузкой на сустав. Присядьте, отдохните и приложите прохладный компресс на 10 минут. Если боль усилится, обязательно обратитесь к врачу.",
+        botA: "🤖 <b>Ответ ассистента:</b> Покалывание может быть вызвано нагрузкой на сустав. Присядьте, отдохните и приложите прохнадный компресс на 10 минут. Если боль усилится, обязательно обратитесь к врачу.",
         ocrUser: "📷 <i>Загружено фото бланка анализов...</i>",
         ocrBot: "🔬 <b>Разбор анализа крови:</b><br>• Гемоглобин: 135 (В норме).<br>• Холестерин: 6.2 (Повышен). Ограничьте жирные продукты и проконсультируйтесь с терапевтом.",
         shareText: "Привет! Нашла отличного голосового помощника по здоровью. Он мне перевел анализы и напоминает пить лекарства. Скачай и введи мой номер телефона при входе!",
         alertNoPoints: "Недостаточно баллов на балансе! Используйте симулятор в разделе 'Кошелек', чтобы накопить баллы.",
         sucPhone: "Успешно! Баланс мобильного телефона пополнен. Налоговая служба и СФР не увидят этот перевод!",
+        sucJkh: "Успешно! Счет за ЖКХ оплачен со счета компании. Квитанция об оплате выслана в чат!",
         sucShop: "Успешно! Электронный сертификат сформирован. Покажите штрих-код на кассе в магазине для бесплатной покупки продуктов!",
-        sucPharma: "Успешно! Лекарства оплачены баллами со счета компании. Заберите ваш заказ в ближайшей аптеке по номеру телефона!"
+        sucPharma: "Успешно! Лекарства оплачены баллами со счета компании. Заберите ваш заказ в ближайшей аптеке по номеру телефона!",
+        
+        sbpPromptSum: "Введите сумму для вывода на карту (Минимум 500):",
+        sbpPromptInn: "⚠️ Внимание! Официальный вывод на карту требует статуса самозанятого для сохранения индексации вашей пенсии. Введите ваш ИНН для автоматической регистрации чека в ФНС РФ:",
+        sbpPromptCard: "Введите номер телефона, привязанный к СБП, и выберите банк:",
+        sbpSuccess: "💰 Деньги успешно отправлены через СБП! Чек автоматически сформирован и передан в ФНС. Индексация вашей пенсии сохранена."
     },
     am: {
         appTitle: "Առողջության Օգնական", walletTitle: "Իմ Քսակը", rewardsTitle: "Միավորների Խանութ",
@@ -45,16 +52,23 @@ const translations = {
         btnShare: "📢 Կիսվել ընկերուհու հետ WhatsApp-ով", navP1: "Օգնական", navP2: "Քսակ", navP3: "Ծախսել",
         rewAvail: "Հասանելի է գնումների համար:", rewTitle: "Որտե՞ղ ծախսել միավորները առանց հարկերի:",
         rewDesc: "Ընտրեք ծառայությունը: Գումարը կփոխանցվի հավելվածից, իսկ ձեր պետական նպաստները կմնան լիակատար պաշտպանության տակ:",
-        rewPhone: "Լիցքավորել հեռախոսահամարը", rewShop: "Սննդի սերտիֆիկատ (Երևան Սիթի / Մագնիտ)", rewPharma: "Դեղորայքի պատվեր դեղատնից",
+        rewPhone: "Լիցքավորել հեռախոսահամարը", rewJkh: "Կոմունալ վճարումներ (Գազ / Լույս / Ջուր)", rewShop: "Սննդի սերտիֆիկատ (Երևան Սիթի)", rewPharma: "Դեղորայքի պատվեր դեղատնից",
+        rewSbpName: "Կանխիկացնել քարտին (Idram / ArCa)", rewSbpMin: "սկսած 2500",
         userQ: "🎤 <i>Դուք ասում եք:</i> «Ծնկներս ցավում են քայլելիս, ի՞նչ անել»:",
         botA: "🤖 <b>Օգնականի պատասխանը:</b> Ծնկների ցավը կարող է լինել ծանրաբեռնվածությունից: Նստեք, հանգստացեք: Եթե ցավը չանցնի, դիմեք ձեր տեղամասային բժշկին:",
         ocrUser: "📷 <i>Անալիզի լուսանկարը բեռնված է...</i>",
         ocrBot: "🔬 <b>Արյան անալիզի պարզաբանում:</b><br>• Հեմոգլոբին: 135 (Նորմա):<br>• Խոլեստերին: 6.2 (Բարձր է): Սահմանափակեք յուղոտ սնունդը:",
         shareText: "Բարև! Հրաշալի հավելված եմ գտել: Ձայնով հարցեր ես տալիս, անալիզներն էլ պարզ բացատրում է: Ներբեռնիր և մուտքագրիր իմ հեռախոսահամարը:",
         alertNoPoints: "Բավարար միավորներ չկան հաշվեկշռին: Օգտագործեք սիմուլյատորը 'Քսակ' բաժնում:",
-        sucPhone: "Հաջողությամբ! Հեռախոսի հաշիվը լիցքավորված է Idram-ի միջոցով: Հարկային մարմինները չեն տեսնի այս փոխանցումը:",
-        sucShop: "Հաջողությամբ! Էլեկտրոնային սերտիֆիկատը պատրաստ է: Ցույց տվեք շտրիխ-կոդը դրամարկղում 'Երևան Սիթի'-ում անվճար գնումների համար:",
-        sucPharma: "Հաջողությամբ! Դեղորայքը վճարված է ընկերության հաշվից: Ստացեք ձեր պատվերը մոտակա դեղատնից հեռախոսահամարով:"
+        sucPhone: "Հաջողությամբ! Հեռախոսի հաշիվը լիցքավորված է:",
+        sucJkh: "Հաջողությամբ! Կոմունալ վճարումները կատարված են ընկերության հաշվից:",
+        sucShop: "Հաջողությամբ! Էլեկտրոնային սերտիֆիկատը պատրաստ է 'Երևան Սիթի'-ի համար:",
+        sucPharma: "Հաջողությամբ! Դեղորայքը վճարված է դեղատնից ստանալու համար:",
+        
+        sbpPromptSum: "Մուտքագրեք կանխիկացման գումարը (Նվազագույնը 2500):",
+        sbpPromptInn: "⚠️ Ուշադրություն! Քարտին փոխանցումը կատարվում է պաշտոնական հարկային համակարգով: Մուտքագրեք ձեր ՀՎՀՀ-ն:",
+        sbpPromptCard: "Մուտքագրեք Idram-ի հեռախոսահամարը կամ ArCa քարտի համարը:",
+        sbpSuccess: "💰 Գումարը հաջողությամբ փոխանցվեց Ձեր քարտին:"
     }
 };
 
@@ -62,7 +76,7 @@ let currentLang = 'ru';
 let currentCurrency = 'RUB';
 let currencySign = '₽';
 let mlmRates = { level1: 175, level2: 50 };
-let rewardCosts = { phone: 500, shop: 1000, pharma: 1500 };
+let rewardCosts = { phone: 500, jkh: 1000, shop: 1500, pharma: 2000 };
 
 let balance = 0; let l1Users = 0; let l2Users = 0; let monthlyIncome = 0;
 
@@ -103,11 +117,13 @@ function changeCurrency() {
     if(currentCurrency === 'RUB') {
         currencySign = '₽';
         mlmRates = { level1: 175, level2: 50 };
-        rewardCosts = { phone: 500, shop: 1000, pharma: 1500 };
+        rewardCosts = { phone: 500, jkh: 1000, shop: 1500, pharma: 2000 };
+        document.getElementById('txt-rew-sbp-min').innerText = "от 500";
     } else {
         currencySign = '֏';
         mlmRates = { level1: 875, level2: 250 };
-        rewardCosts = { phone: 2500, shop: 5000, pharma: 7500 };
+        rewardCosts = { phone: 2500, jkh: 5000, shop: 7500, pharma: 10000 };
+        document.getElementById('txt-rew-sbp-min').innerText = "սկսած 2500";
     }
     balance = 0; l1Users = 0; l2Users = 0; monthlyIncome = 0;
     
@@ -118,6 +134,7 @@ function changeCurrency() {
     document.getElementById('l2-count').innerText = '0 чел.';
     
     document.querySelector('.cost-val-phone').innerText = rewardCosts.phone;
+    document.querySelector('.cost-val-jkh').innerText = rewardCosts.jkh;
     document.querySelector('.cost-val-shop').innerText = rewardCosts.shop;
     document.querySelector('.cost-val-pharma').innerText = rewardCosts.pharma;
     
@@ -127,32 +144,13 @@ function changeCurrency() {
 
 function updateLocalization() {
     const t = translations[currentLang];
-    document.getElementById('txt-welcome-msg').innerHTML = t.welcome;
-    document.getElementById('txt-mic-sub').innerText = t.micSub;
-    document.getElementById('txt-ocr-title').innerText = t.ocrTitle;
-    document.getElementById('txt-ocr-desc').innerText = t.ocrDesc;
-    document.getElementById('txt-ocr-btn').innerText = t.ocrBtn;
-    document.getElementById('txt-bal-title').innerText = t.balTitle;
-    document.getElementById('txt-bal-desc').innerText = t.balDesc;
-    document.getElementById('txt-sim-title').innerText = t.simTitle;
-    document.getElementById('txt-sim-desc').innerText = t.simDesc;
-    document.getElementById('txt-sim-b1').innerText = t.simB1;
-    document.getElementById('txt-sim-b2').innerText = t.simB2;
-    document.getElementById('txt-stat-title').innerText = t.statTitle;
-    document.getElementById('txt-stat-l1').innerText = t.statL1;
-    document.getElementById('txt-stat-l2').innerText = t.statL2;
-    document.getElementById('txt-stat-inc').innerText = t.statInc;
-    document.getElementById('txt-btn-share').innerText = t.btnShare;
-    document.getElementById('txt-nav-p1').innerText = t.navP1;
-    document.getElementById('txt-nav-p2').innerText = t.navP2;
-    document.getElementById('txt-nav-p3').innerText = t.navP3;
-    
-    document.getElementById('txt-rew-avail').innerText = t.rewAvail;
     document.getElementById('txt-rew-title').innerText = t.rewTitle;
     document.getElementById('txt-rew-desc').innerText = t.rewDesc;
     document.getElementById('txt-rew-p-name').innerText = t.rewPhone;
+    document.getElementById('txt-rew-j-name').innerText = t.rewJkh;
     document.getElementById('txt-rew-s-name').innerText = t.rewShop;
     document.getElementById('txt-rew-m-name').innerText = t.rewPharma;
+    document.getElementById('txt-rew-sbp-name').innerText = t.rewSbpName;
 }
 
 function simulateVoiceInput() {
@@ -211,7 +209,36 @@ function redeemReward(type) {
         document.getElementById('balance-val-rewards').innerText = balance;
         
         if (type === 'phone') alert(t.sucPhone);
+        else if (type === 'jkh') alert(t.sucJkh);
         else if (type === 'shop') alert(t.sucShop);
         else if (type === 'pharma') alert(t.sucPharma);
     }
+}
+
+function openSbpModal() {
+    const t = translations[currentLang];
+    const minAmount = currentCurrency === 'RUB' ? 500 : 2500;
+    
+    if (balance < minAmount) {
+        alert(t.alertNoPoints);
+        return;
+    }
+    
+    let sum = prompt(t.sbpPromptSum, minAmount);
+    if (!sum || parseInt(sum) < minAmount) return;
+    if (parseInt(sum) > balance) {
+        alert(t.alertNoPoints);
+        return;
+    }
+    
+    let inn = prompt(t.sbpPromptInn, "123456789012");
+    if (!inn) return;
+    
+    let card = prompt(t.sbpPromptCard, "+7 (999) 000-00-00, Т-Банк");
+    if (!card) return;
+    
+    balance -= parseInt(sum);
+    document.getElementById('balance-val').innerText = balance;
+    document.getElementById('balance-val-rewards').innerText = balance;
+    alert(t.sbpSuccess);
 }
