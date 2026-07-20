@@ -2,8 +2,6 @@
 body { background-color: #F4F6F4; color: #1A1A1A; font-size: 18px; line-height: 1.5; padding-bottom: 120px; }
 .header { background-color: #2E7D32; color: white; padding: 15px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
 .header-title { font-size: 22px; font-weight: bold; }
-.selectors { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
-select { padding: 8px 12px; font-size: 15px; border-radius: 8px; border: none; font-weight: bold; background: white; color: #2E7D32; cursor: pointer; }
 .screen { padding: 20px; display: none; max-width: 500px; margin: 0 auto; }
 .screen.active { display: block !important; }
 .card { background: white; border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #E0E0E0; }
@@ -27,11 +25,23 @@ select { padding: 8px 12px; font-size: 15px; border-radius: 8px; border: none; f
 .nav-item { flex: 1; text-align: center; background: none; border: none; font-size: 16px; font-weight: bold; color: #757575; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
 .nav-item.active { color: #2E7D32; background-color: #E8F5E9; }
 .nav-icon { font-size: 26px; margin-bottom: 2px; }
-
-/* СТИЛИ ДЛЯ СПИСКА НАГРАД */
 .reward-item { display: flex; align-items: center; padding: 15px; border: 1px solid #E0E0E0; border-radius: 12px; margin-bottom: 12px; cursor: pointer; transition: background 0.1s; }
 .reward-item:active { background-color: #F0F4F0; transform: scale(0.99); }
 .reward-icon { font-size: 32px; margin-right: 15px; }
 .reward-info { flex: 1; display: flex; justify-content: space-between; align-items: center; }
 .reward-name { font-weight: bold; font-size: 17px; max-width: 70%; color: #333; }
 .reward-cost { font-weight: bold; font-size: 18px; color: #2E7D32; white-space: nowrap; }
+
+/* СТИЛИ ДЛЯ ВСПЛЫВАЮЩЕГО КУПОНА (НОВОЕ!) */
+.modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 10000; padding: 20px; }
+.modal-overlay.active { display: flex; }
+.coupon-card { background: white; border-radius: 20px; width: 100%; max-width: 400px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center; border: 2px solid #2E7D32; position: relative; }
+.coupon-logo { font-size: 40px; margin-bottom: 5px; }
+.coupon-title { font-size: 22px; font-weight: bold; color: #1A1A1A; margin-bottom: 5px; }
+.coupon-value { font-size: 28px; font-weight: bold; color: #2E7D32; margin-bottom: 15px; }
+
+/* Реалистичный штрих-код на чистом CSS */
+.coupon-barcode { width: 100%; height: 80px; margin: 15px 0 5px 0; background: repeating-linear-gradient(90deg, #000, #000 2px, #fff 2px, #fff 6px, #000 6px, #000 7px, #fff 7px, #fff 9px, #000 9px, #000 12px, #fff 12px, #fff 14px); border: 1px solid #DDD; }
+.coupon-code-num { font-family: 'Courier New', Courier, monospace; font-size: 16px; font-weight: bold; letter-spacing: 3px; color: #333; margin-bottom: 15px; }
+.coupon-pin-box { background: #F4F6F4; border: 1px dashed #2E7D32; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 18px; font-weight: bold; }
+.coupon-instruction { font-size: 14px; color: #666; text-align: left; background: #FFF8E1; padding: 12px; border-radius: 8px; border-left: 4px solid #FFB74D; margin-bottom: 15px; line-height: 1.4; }
